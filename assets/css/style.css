@@ -1,0 +1,59 @@
+body, html{
+    font-family: sans-serif;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+.form-control{
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 0;
+    border-top: 1px solid #f0f0f0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition:none;
+    -o-transition:none;
+    transition: all 0.4s;
+    height: 40px;
+}
+
+.form-control:focus, .form-control:hover{
+    border-top:4px solid #2f937b;
+}
+
+.main-bg{
+    background-image: url(../media/08.jpg);
+    background-size: cover;
+    background-blend-mode: color;
+}
+
+.line{
+    border-color: #017fa5;
+    border-width: 2px;
+    width: 60px;
+}
+
+.stat-num{
+    font-size: 600%;
+    color: #017fa5;
+}
+.btn{
+    border-radius: 0px;
+}
+.btn-utama{
+    background-color: #017fa5;
+    width: 80%;
+    color: white;
+}
+.btn-utama:hover{
+    background-color: #039bc9;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+    color: white;
+    transition-duration: 0.5s;
+}
