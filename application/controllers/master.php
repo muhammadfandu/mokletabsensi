@@ -102,12 +102,19 @@ class Master extends CI_Controller {
                                                             });</script>');
                             redirect("master/management");
                         }
-                        else{
+                        else if ($_SESSION['tipe_user'] == 'Siswa'){
                             $this->session->set_flashdata('msg', 
                                                           '<script>$(document).ready(function(){
                                                                  swal("Sukses!", "Login berhasil", "success");
                                                             });</script>');
-                            redirect("master/dashboard");
+                            redirect("master/dashboard_siswa");
+                        }
+                          else if ($_SESSION['tipe_user'] == 'Guru'){
+                            $this->session->set_flashdata('msg', 
+                                                          '<script>$(document).ready(function(){
+                                                                 swal("Sukses!", "Login berhasil", "success");
+                                                            });</script>');
+                            redirect("master/dashboard_guru");
                         }
                     }
                     else
@@ -156,11 +163,13 @@ class Master extends CI_Controller {
         $this->load->view('footer');
     }
     
-    public function dashboard(){
+   public function dashboard_siswa(){
         
 //        echo "<pre>";
 //        print_r($_SESSION);
 //        echo "</pre>";
+        
+        $data['siswa'] = $this->absensi->login_siswa($_SESSION['username']);
         
         $this->load->model('absensi');
         
@@ -172,8 +181,47 @@ class Master extends CI_Controller {
         
         $this->load->helper('url');
         $this->load->view('header');
-        $this->load->view('dashboard', $data);
+        $this->load->view('dashboard_siswa', $data);
         $this->load->view('footer');
+    }
+    
+        public function dashboard_guru(){
+        
+//        echo "<pre>";
+//        print_r($_SESSION);
+//        echo "</pre>";
+        
+        $data['guru'] = $this->absensi->login_guru($_SESSION['username']);
+        
+        $this->load->model('absensi');
+        
+        $data['data'] = $this->absensi->getAbsensi();
+        
+//        echo "<pre>";
+//        print_r($data);
+//        echo "</pre>";
+        
+        $this->load->helper('url');
+        $this->load->view('header');
+        $this->load->view('dashboard_guru', $data);
+        $this->load->view('footer');
+    }
+    
+    
+     public function data_siswa()
+    {
+    $this->load->model('absensi');
+    $username = $this->input->post("identification");
+	$data = $this->absensi->login_siswa($_SESSION['username']);
+    $this->load->view('dashboard_siswa', $data);
+    }
+    
+      public function data_guru()
+    {
+    $this->load->model('absensi');
+    $username = $this->input->post("identification");
+	$data = $this->absensi->login_guru($_SESSION['username']);
+    $this->load->view('dashboard_guru', $data);
     }
     
     public function management(){

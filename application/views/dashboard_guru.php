@@ -5,44 +5,42 @@
         <h1>Dashboard</h1>
         <hr class="line" align="left">
     </div>
+        
+        
     <div class="row" style="background-color:#ffffff;">
      <br>
         <div class="col-sm-4" style="">
            <center style="background-color:#ffffff;height:300px;vertical-align:middle;">
             <i class="fa fa-4x fa-fw fa-user" style="font-size:12em;color:#017fa5;"></i>
-            <h2><?php  echo $_SESSION['username']; ?></h2>
+            <h2><?php echo $_SESSION['username']; ?></h2>
             </center>
         </div>
         <div class="col-sm-8">
-           <table class="" style="background-color:#ffffff;height:300px;width:100%;">
+            <?php foreach ($guru as $an) { ?>
                <tr>
-                   <td><h4><b>Fakultas</b></h4></td>
-                   <td><h4>:</h4></td>
-                   <td><h4>Informatics System</h4></td>
+                   <td><h4><b>Nama:</b></h4></td>
+                   <td><?php echo $an['nama_guru']; ?></td>
                </tr>
                <tr>
-                   <td><h4><b>Tempat Kelahiran</b></h4></td>
-                   <td><h4>:</h4></td>
-                   <td><h4>Malang</h4></td>
+                   <td><h4><b>Mata Pelajaran:</b></h4></td>
+                   <td><?php echo $an['mapel_guru']; ?></td>
                </tr>
                <tr>
-                   <td><h4><b>Tanggal Kelahiran</b></h4></td>
-                   <td><h4>:</h4></td>
-                   <td><h4>17 August 1945</h4></td>
+                   <td><h4><b>Jenis Kelamin:</b></h4></td>
+                   <td><?php echo $an['jk_guru']; ?></td>
                </tr>
                <tr>
-                   <td><h4><b>Alamat Email</b></h4></td>
-                   <td><h4>:</h4></td>
-                   <td><h4>mail@mail.mail</h4></td>
+                   <td><h4><b>Alamat:</b></h4></td>
+                   <td><?php echo $an['alamat_guru']; ?></td>
                </tr>
                <tr>
-                   <td><h4><b>Nomor Telepon</b></h4></td>
-                   <td><h4>:</h4></td>
-                   <td><h4>+62 822 4545 0689</h4></td>
+                   <td><h4><b>No. Telepon:</b></h4></td>
+                   <td><?php echo $an['telp_guru']; ?></td>
                </tr>
-           </table>
         </div>
     </div>
+    <?php } ?>
+        
     <div class="row" style="background-color:#ffffff;">
        
         <h2 class="text-center">Data Absensi</h2>
@@ -73,14 +71,9 @@
             <?php } ?>
             </table>
         </div>
-       
     </div>
-    
     <br><br>
-    
     </div>
     
     <br><br><br><br><br><br>
 </div>
-<?php echo $this->session->flashdata('msg'); ?>
-

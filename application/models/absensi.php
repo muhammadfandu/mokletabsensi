@@ -51,5 +51,20 @@ class Absensi extends CI_model{
         $sql = "delete from absensi where id_user = '". $id ."' and jam_absen = '" . $jam . "' ";
         $query = $this->db->query($sql);
     }
+    
+    public function login_siswa($username)
+    {
+        $sql = "select * from data_siswa join user on data_siswa.id_user = user.id_user where user.username = '".$username."'";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    
+    public function login_guru($username)
+    {
+        $sql = "select * from data_guru join user on data_guru.id_user = user.id_user where user.username = '".$username."'";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
 }
 ?>
